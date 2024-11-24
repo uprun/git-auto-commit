@@ -7,6 +7,7 @@ So commit on every change
 
 ## remarks aka known issues
 probably will not work with rebasing
+
 switch to main branch does not work from the first time
 
 # Support on Patreon
