@@ -26,6 +26,7 @@ while(true)
     {
         Console.Write(".");
     }
+    ok ++;
     
 }
 
