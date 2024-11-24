@@ -83,7 +83,10 @@ public class Bundle_Watcher
         }
 
         var output_git_add = git_add();
-        if (output_git_add.Contains(""))
+        if (output_git_add.ToLowerInvariant().Contains("nothing to commit") == false)
+        {
+            
+        }
         git_commit();
     }
 
