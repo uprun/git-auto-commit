@@ -82,7 +82,8 @@ public class Bundle_Watcher
             git_create_new_branch();
         }
 
-        var output = git_add();
+        var output_git_add = git_add();
+        if (output_git_add.Contains(""))
         git_commit();
     }
 
