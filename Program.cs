@@ -90,9 +90,22 @@ public class Bundle_Watcher
         var output_git_add = git_add();
         if (string.IsNullOrEmpty(output_git_add) == false )
         {
+            
             // the idea here is if you are switching branches then there is nothing to add
             // and if there is something to add then you need a new branch
-            git_create_new_branch();
+            // interesting I thought that on every change a new branch will be creates
+            // hmm looks like it will create a new branch after all, it might be a feature but also 
+            // this means that there will be a way more branches than I wanted
+            if (current_branch.Contains("main") || current_branch.Contains("prod"))
+            {
+                // only allow branching from "main" branch
+                git_create_new_branch();
+            }
+            
+        }
+        else
+        {
+            Console.WriteLine("There is nothing to add, therefore no need to create a branch");
         }
         git_commit();
     }
@@ -137,7 +150,7 @@ public class Bundle_Watcher
             {
                 string result = reader.ReadToEnd();
                 Console.WriteLine(result);
-                return result;
+                return result; 
             }
         }
     }
