@@ -1,6 +1,9 @@
 # git-auto-commit
 creates a commit on each change of the file
 
+# goals of the project:
+This is targetting solo developers
+
 # Support on Patreon
 
 https://www.patreon.com/o_kryvonos
