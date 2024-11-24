@@ -86,7 +86,7 @@ public class Bundle_Watcher
             // interesting I thought that on every change a new branch will be creates
             // hmm looks like it will create a new branch after all, it might be a feature but also 
             // this means that there will be a way more branches than I wanted
-            if (current_branch.Contains(""))
+            if (current_branch.Contains("main") || current_branch)
             git_create_new_branch();
         }
         git_commit();
