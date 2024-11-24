@@ -17,7 +17,7 @@ probably will not work with rebasing
 
 [ ] there are a lot of branches, I need to remove automatically them
 
-[ ]  
+[ ] I need to fetch "main" branch automatically
 # Support on Patreon
 
 https://www.patreon.com/o_kryvonos
