@@ -87,6 +87,8 @@ public class Bundle_Watcher
         Console.WriteLine(e.FullPath);
         Console.WriteLine($"changes detected as of time: {DateTime.Now:HH-mm-ss:fff}");
 
+        var current_branch = git_current_branch();
+
         var output_git_add = git_add();
         if (string.IsNullOrEmpty(output_git_add) == false )
         {
