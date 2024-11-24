@@ -82,7 +82,7 @@ public class Bundle_Watcher
             git_create_new_branch();
         }
 
-        git_add();
+        var output = git_add();
         git_commit();
     }
 
