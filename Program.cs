@@ -20,7 +20,7 @@ while(true)
     await Task.Delay(TimeSpan.FromSeconds(0.1));
     if (ok % 20 == 0)
     {
-        Console.WriteLine($"Hello git-auto-commit {DateTime.Now:hh-MM-ss}");
+        Console.WriteLine($"Hello git-auto-commit {DateTime.Now:hh:MM:ss}");
     }
     else
     {
