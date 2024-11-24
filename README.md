@@ -2,7 +2,7 @@
 creates a commit on each change of the file
 
 ## supported scenarios
-you have one "main" branch from which you create feature branches
+1) you have one "main" branch from which you create feature branches
 
 
 
