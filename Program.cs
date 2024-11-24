@@ -28,6 +28,7 @@ public class Bundle_Watcher
     {
         if (watcher != null) return;
         var path = Directory.GetCurrentDirectory();
+        path = Path.Join(path, "..");
         Console.WriteLine($"watching {path}");
         watcher = new FileSystemWatcher(path);
 
@@ -75,8 +76,14 @@ public class Bundle_Watcher
         Console.WriteLine(e.FullPath);
         Console.WriteLine($"changes detected as of time: {DateTime.Now:HH-mm-ss:fff}");
         var current_branch = git_current_branch();
-        if (current_branch.Contains("prod"))
+        if (current_branch.Contains("prod") || current_branch.Contains("main"))
+        {
+            //git checkout
+            git_create_new_branch();
+        }
 
+        git_add();
+        git_commit();
     }
 
     private static string git_current_branch()
@@ -95,6 +102,78 @@ public class Bundle_Watcher
             using (StreamReader reader = process.StandardOutput)
             {
                 string result = reader.ReadToEnd();
+                return result;
+            }
+        }
+    }
+
+    private static string git_create_new_branch()
+    {
+        DateTime now = DateTime.Now;
+        ProcessStartInfo startInfo = new ProcessStartInfo
+        {
+            FileName = "git",
+            Arguments = $"checkout -b {now:yyyy-MM-dd--HH}h{now:mm}m",
+            RedirectStandardOutput = true,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+            //WorkingDirectory = 
+        };
+
+        using (Process process = Process.Start(startInfo))
+        {
+            using (StreamReader reader = process.StandardOutput)
+            {
+                string result = reader.ReadToEnd();
+                Console.WriteLine(result);
+                return result;
+            }
+        }
+    }
+
+    private static string git_add()
+    {
+        DateTime now = DateTime.Now;
+        ProcessStartInfo startInfo = new ProcessStartInfo
+        {
+            FileName = "git",
+            Arguments = $"add .",
+            RedirectStandardOutput = true,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+            //WorkingDirectory = 
+        };
+
+        using (Process process = Process.Start(startInfo))
+        {
+            using (StreamReader reader = process.StandardOutput)
+            {
+                string result = reader.ReadToEnd();
+                Console.WriteLine(result);
+                return result;
+            }
+        }
+    }
+
+    private static string git_commit()
+    {
+        DateTime now = DateTime.Now;
+        ProcessStartInfo startInfo = new ProcessStartInfo
+        {
+            FileName = "git",
+            Arguments = $"commit -m \"{now:yyyy-MM-dd--HH}h{now:mm}m{now:ss}s\"",
+            RedirectStandardOutput = true,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+            //WorkingDirectory = 
+        };
+
+        using (Process process = Process.Start(startInfo))
+        {
+            using (StreamReader reader = process.StandardOutput)
+            {
+                string result = reader.ReadToEnd();
+                Console.WriteLine(result);
                 return result;
             }
         }
