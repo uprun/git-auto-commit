@@ -82,6 +82,7 @@ public class Bundle_Watcher
         {
             // the idea here is if you are switching branches then there is nothing to add
             // and if there is something to add then you need a new branch
+            // interesting I thought that on every change a new branch will be creates
             git_create_new_branch();
         }
         git_commit();
