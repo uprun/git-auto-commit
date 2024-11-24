@@ -76,16 +76,12 @@ public class Bundle_Watcher
         Console.WriteLine(e.FullPath);
         Console.WriteLine($"changes detected as of time: {DateTime.Now:HH-mm-ss:fff}");
         var current_branch = git_current_branch();
-        if (current_branch.Contains("prod") || current_branch.Contains("main"))
-        {
-            //git checkout
-            
-        }
 
         var output_git_add = git_add();
-        if (output_git_add.ToLowerInvariant().Contains("nothing to commit") == false)
+        if (string.IsNullOrEmpty(output_git_add) == false )
         {
             // the idea here is if you are switching branches then there is nothing to add
+            // and if there is something to add then you need a new branch
             git_create_new_branch();
         }
         git_commit();
@@ -142,7 +138,7 @@ public class Bundle_Watcher
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
             FileName = "git",
-            Arguments = $"add .",
+            Arguments = $"add . --verbose",
             RedirectStandardOutput = true,
             UseShellExecute = false,
             CreateNoWindow = true,
