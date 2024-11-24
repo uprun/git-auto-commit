@@ -79,13 +79,13 @@ public class Bundle_Watcher
         if (current_branch.Contains("prod") || current_branch.Contains("main"))
         {
             //git checkout
-            git_create_new_branch();
+            
         }
 
         var output_git_add = git_add();
         if (output_git_add.ToLowerInvariant().Contains("nothing to commit") == false)
         {
-            
+            git_create_new_branch();
         }
         git_commit();
     }
