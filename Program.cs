@@ -85,6 +85,7 @@ public class Bundle_Watcher
         var output_git_add = git_add();
         if (output_git_add.ToLowerInvariant().Contains("nothing to commit") == false)
         {
+            // the idea here is if you are switching branches then there is no
             git_create_new_branch();
         }
         git_commit();
