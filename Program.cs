@@ -80,7 +80,7 @@ public class Bundle_Watcher
         var output_git_add = git_add();
         if (string.IsNullOrEmpty(output_git_add) == false )
         {
-            Console.WriteLine("There is nothing to add, therefore no need to create a branch");
+            
             // the idea here is if you are switching branches then there is nothing to add
             // and if there is something to add then you need a new branch
             // interesting I thought that on every change a new branch will be creates
@@ -92,6 +92,10 @@ public class Bundle_Watcher
                 git_create_new_branch();
             }
             
+        }
+        else
+        {
+            Console.WriteLine("There is nothing to add, therefore no need to create a branch");
         }
         git_commit();
     }
