@@ -16,9 +16,13 @@ some.Start();
 int ok = 0;
 while(true)
 {
-    
+
     await Task.Delay(TimeSpan.FromSeconds(0.1));
-    Console.WriteLine("Hello git-auto-commit");
+    if (ok % 20 == 0)
+    {
+        Console.WriteLine("Hello git-auto-commit");
+    }
+    
 }
 
 public class Bundle_Watcher
