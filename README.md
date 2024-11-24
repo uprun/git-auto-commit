@@ -2,6 +2,8 @@
 creates a commit on each change of the file
 
 ## supported scenarios
+you have one "main" branch from which you create feature branches
+
 
 
 ## goals of the project:
