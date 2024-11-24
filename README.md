@@ -1,6 +1,9 @@
 # git-auto-commit
 creates a commit on each change of the file
 
+## supported scenarios
+
+
 ## goals of the project:
 This is targetting solo developers, in order to support open-development paradigm
 So commit on every change
