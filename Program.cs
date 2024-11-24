@@ -22,6 +22,10 @@ while(true)
     {
         Console.WriteLine("Hello git-auto-commit");
     }
+    else
+    {
+        Console.Write(".")
+    }
     
 }
 
