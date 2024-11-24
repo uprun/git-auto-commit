@@ -2,7 +2,7 @@
 creates a commit on each change of the file
 
 # goals of the project:
-This is targetting solo developers, in order to 
+This is targetting solo developers, in order to support open-development paradigm
 
 # Support on Patreon
 
