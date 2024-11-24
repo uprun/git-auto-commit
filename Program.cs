@@ -13,6 +13,7 @@ Console.WriteLine("Hello git-auto-commit");
 var some  = new Bundle_Watcher();
 
 some.Start();
+int ok = 0;
 while(true)
 {
     await Task.Delay(TimeSpan.FromSeconds(0.1));
