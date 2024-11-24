@@ -13,10 +13,21 @@ Console.WriteLine("Hello git-auto-commit");
 var some  = new Bundle_Watcher();
 
 some.Start();
+int ok = 0;
 while(true)
 {
+
     await Task.Delay(TimeSpan.FromSeconds(0.1));
-    Console.WriteLine("Hello git-auto-commit");
+    if (ok % 20 == 0)
+    {
+        Console.WriteLine($"Hello git-auto-commit {DateTime.Now:HH:mm:ss}");
+    }
+    else
+    {
+        Console.Write(".");
+    }
+    ok ++;
+    
 }
 
 public class Bundle_Watcher
@@ -75,7 +86,6 @@ public class Bundle_Watcher
         }
         Console.WriteLine(e.FullPath);
         Console.WriteLine($"changes detected as of time: {DateTime.Now:HH-mm-ss:fff}");
-        var current_branch = git_current_branch();
 
         var output_git_add = git_add();
         if (string.IsNullOrEmpty(output_git_add) == false )
