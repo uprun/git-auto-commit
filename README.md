@@ -4,7 +4,7 @@ creates a commit on each change of the file
 ## supported scenarios
 1) you have one "main" branch from which you create feature branches
 
-
+2) 
 
 ## goals of the project:
 This is targetting solo developers, in order to support open-development paradigm
