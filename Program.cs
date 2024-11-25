@@ -119,7 +119,7 @@ public class Bundle_Watcher
         git_commit();
     }
 
-    private static string git_current_branch()
+    private static string git_current_branch(string workingDirectory)
     {
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
@@ -127,7 +127,8 @@ public class Bundle_Watcher
             Arguments = "branch --show-current",
             RedirectStandardOutput = true,
             UseShellExecute = false,
-            CreateNoWindow = true
+            CreateNoWindow = true,
+            WorkingDirectory = workingDirectory
         };
 
         using (Process process = Process.Start(startInfo))
