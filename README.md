@@ -15,6 +15,8 @@ probably will not work with rebasing
 
 [ ] add --verbose as a parameter
 
+[ ] also push every commit
+
 [ ] there are a lot of branches, I need to remove automatically them
 
 [ ] I need to fetch "main" branch automatically
