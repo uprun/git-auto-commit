@@ -38,10 +38,10 @@ public class Bundle_Watcher
     public void Start()
     {
         if (watcher != null) return;
-        var path = Directory.GetCurrentDirectory();
-        path = Path.Join(path, "..");
-        Console.WriteLine($"watching {path}");
-        watcher = new FileSystemWatcher(path);
+        _initial_path = Directory.GetCurrentDirectory();
+        _initial_path = Path.Join(_initial_path, "..");
+        Console.WriteLine($"watching {_initial_path}");
+        watcher = new FileSystemWatcher(_initial_path);
 
         watcher.NotifyFilter = NotifyFilters.Attributes
                                 | NotifyFilters.CreationTime
