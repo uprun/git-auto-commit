@@ -1,5 +1,5 @@
 # git-auto-commit
-Have you ever wondered what was the flow of transformations on a code but git diff does not show you correct picture.
+Have you ever wondered what was the flow of transformations on a code but git diff does not show you a correct picture.
 
 Tadaaa - here I present a solution, at least I think it is a solution:
 
