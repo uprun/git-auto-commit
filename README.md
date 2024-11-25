@@ -13,7 +13,7 @@ So commit on every change
 ## remarks aka known issues
 probably will not work with rebasing
 
-[ ] make less verbose output
+[X] make less verbose output
 
 [ ] there are a lot of branches, I need to remove automatically them
 
