@@ -1,27 +1,22 @@
 # git-auto-commit
-creates a commit on each change of the file
+Have you ever wondered what was the flow of transformations on a code but git diff does not show you correct picture.
 
-## supported scenarios
+Tadaaa - here I present a solution, at least I think it is a solution:
+
+create a commit on each change of the file.
+
+
+
+## supported scenario:
 1) you have one "main" branch from which you create feature branches
 
-2) you are a solo developer (I will add support for multiple people later)
-
-## goals of the project:
-This is targetting solo developers, in order to support open-development paradigm
-So commit on every change
-
 ## remarks aka known issues
-probably will not work with rebasing
 
-[X] switch to main branch does not work from the first time (fixed now)
+[ ] also push every commit - nah, I mean no need to do this. Pushing commits is not that hard and this allows for better privacy support
 
 [ ] there are a lot of branches, I need to remove automatically them
 
-[ ] I need to fetch "main" branch automatically
-
-[X] fix from which folder to run git command
-
-[ ] get default branch name 
+[ ] get default branch name (not everyone uses Main or prod)
 
 [ ] run own instance of git-server with withible commit details
 # Support on Patreon

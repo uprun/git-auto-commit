@@ -69,29 +69,30 @@ public class Bundle_Watcher
     {
         string fullPath = e.FullPath;
         var almost_project_directory = fullPath.Substring(_initial_path!.Length);
-        Console.WriteLine("Something similar to project directory: " + almost_project_directory);
+        //Console.WriteLine("Something similar to project directory: " + almost_project_directory);
         var splitted = almost_project_directory.Split(new [] {Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar}, StringSplitOptions.RemoveEmptyEntries);
         var project_directory = splitted.First();
-        Console.WriteLine($"Project is: {project_directory}" );
+        //Console.WriteLine($"Project is: {project_directory}" );
         var full_project_directory_path = Path.Combine(_initial_path, project_directory);
         if (fullPath.Contains("/.git/"))
         {
-            Console.WriteLine($"Ignoring {fullPath}");
+            //Console.WriteLine($"Ignoring {fullPath}");
             return;
         }
 
         if (fullPath.Contains("/bin/"))
         {
-            Console.WriteLine($"Ignoring {fullPath}");
+            //Console.WriteLine($"Ignoring {fullPath}");
             return;
         }
 
         if (fullPath.Contains("/obj/"))
         {
-            Console.WriteLine($"Ignoring {fullPath}");
+            //Console.WriteLine($"Ignoring {fullPath}");
             return;
         }
         Console.WriteLine(fullPath);
+
         Console.WriteLine($"changes detected as of time: {DateTime.Now:HH-mm-ss:fff}");
 
         var current_branch = git_current_branch(full_project_directory_path);
@@ -212,7 +213,7 @@ public class Bundle_Watcher
             using (StreamReader reader = process.StandardOutput)
             {
                 string result = reader.ReadToEnd();
-                Console.WriteLine(result);
+                //Console.WriteLine(result);
                 return result;
             }
         }
