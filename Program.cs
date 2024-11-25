@@ -68,7 +68,7 @@ public class Bundle_Watcher
     private void OnChanged(object sender, FileSystemEventArgs e)
     {
         string fullPath = e.FullPath;
-        fullPath.Substring(_initial_path.Length)
+        fullPath.Substring(_initial_path!.Length);
         if (fullPath.Contains("/.git/"))
         {
             Console.WriteLine($"Ignoring {fullPath}");
