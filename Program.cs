@@ -165,7 +165,7 @@ public class Bundle_Watcher
         }
     }
 
-    private static string git_add()
+    private static string git_add(string workingDirectory)
     {
         DateTime now = DateTime.Now;
         ProcessStartInfo startInfo = new ProcessStartInfo
@@ -175,7 +175,7 @@ public class Bundle_Watcher
             RedirectStandardOutput = true,
             UseShellExecute = false,
             CreateNoWindow = true,
-            //WorkingDirectory = 
+            WorkingDirectory = workingDirectory
         };
 
         using (Process process = Process.Start(startInfo))
