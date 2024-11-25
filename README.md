@@ -22,6 +22,8 @@ probably will not work with rebasing
 [ ] fix from which folder to run git command
 
 [ ] get default branch name 
+
+[ ] run own instance of git-server with withible commit details
 # Support on Patreon
 
 https://www.patreon.com/o_kryvonos
