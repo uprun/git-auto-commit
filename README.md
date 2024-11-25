@@ -11,6 +11,8 @@ create a commit on each change of the file.
 1) you have one "main" branch from which you create feature branches
 2) all your projects are located in one folder (works for me at least :D )
 
+I created this project within two days and I think that 
+
 ## remarks aka known issues
 
 [ ] also push every commit - nah, I mean no need to do this. Pushing commits is not that hard and this allows for better privacy support
