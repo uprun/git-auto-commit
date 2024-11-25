@@ -115,6 +115,10 @@ public class Bundle_Watcher
                 // only allow branching from "main" branch
                 git_create_new_branch(full_project_directory_path);
             }
+            else
+            {
+                Console.WriteLine("Changes are present but assumption is that we are already in the feature branch, so suspending creation of a new branch");
+            }
         }
         git_commit(full_project_directory_path);
     }
