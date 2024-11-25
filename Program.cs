@@ -112,6 +112,7 @@ public class Bundle_Watcher
             // this means that there will be a way more branches than I wanted
             if (current_branch.Contains("main") || current_branch.Contains("prod"))
             {
+                Console.WriteLine("")
                 // only allow branching from "main" branch
                 git_create_new_branch(full_project_directory_path);
             }
