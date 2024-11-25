@@ -92,6 +92,7 @@ public class Bundle_Watcher
             return;
         }
         Console.WriteLine(fullPath);
+        
         Console.WriteLine($"changes detected as of time: {DateTime.Now:HH-mm-ss:fff}");
 
         var current_branch = git_current_branch(full_project_directory_path);
