@@ -9,6 +9,7 @@ create a commit on each change of the file.
 
 ## supported scenario:
 1) you have one "main" branch from which you create feature branches
+2) all your projects are located in one folder
 
 ## remarks aka known issues
 
