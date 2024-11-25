@@ -65,26 +65,26 @@ public class Bundle_Watcher
 
     }
 
-    private void OnChanged(object sender, FileSystemEventArgs e, string fullPath)
+    private void OnChanged(object sender, FileSystemEventArgs e)
     {
-        if (fullPath.Contains("/.git/"))
+        if (e.FullPath.Contains("/.git/"))
         {
-            Console.WriteLine($"Ignoring {fullPath}");
+            Console.WriteLine($"Ignoring {e.FullPath}");
             return;
         }
 
-        if (fullPath.Contains("/bin/"))
+        if (e.FullPath.Contains("/bin/"))
         {
-            Console.WriteLine($"Ignoring {fullPath}");
+            Console.WriteLine($"Ignoring {e.FullPath}");
             return;
         }
 
-        if (fullPath.Contains("/obj/"))
+        if (e.FullPath.Contains("/obj/"))
         {
-            Console.WriteLine($"Ignoring {fullPath}");
+            Console.WriteLine($"Ignoring {e.FullPath}");
             return;
         }
-        Console.WriteLine(fullPath);
+        Console.WriteLine(e.FullPath);
         Console.WriteLine($"changes detected as of time: {DateTime.Now:HH-mm-ss:fff}");
 
         var current_branch = git_current_branch();
