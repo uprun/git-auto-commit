@@ -189,7 +189,7 @@ public class Bundle_Watcher
         }
     }
 
-    private static string git_commit()
+    private static string git_commit(string workingDirectory)
     {
         DateTime now = DateTime.Now;
         ProcessStartInfo startInfo = new ProcessStartInfo
@@ -199,7 +199,7 @@ public class Bundle_Watcher
             RedirectStandardOutput = true,
             UseShellExecute = false,
             CreateNoWindow = true,
-            //WorkingDirectory = 
+            WorkingDirectory = workingDirectory
         };
 
         using (Process process = Process.Start(startInfo))
