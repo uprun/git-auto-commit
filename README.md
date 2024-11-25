@@ -1,5 +1,6 @@
 # git-auto-commit
-Have you ever wondered what 
+Have you ever wondered what was the flow of transformations on a code but git diff does not show you correct picture.
+
 creates a commit on each change of the file
 
 ## supported scenarios
