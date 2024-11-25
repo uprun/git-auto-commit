@@ -15,7 +15,7 @@ probably will not work with rebasing
 
 [ ] add --verbose as a parameter
 
-[ ] also push every commit
+[ ] also push every commit - nah, I mean no need to do this pushing commits is not that hard and this allows for better privacy support
 
 [ ] there are a lot of branches, I need to remove automatically them
 
