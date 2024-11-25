@@ -115,7 +115,6 @@ public class Bundle_Watcher
                 // only allow branching from "main" branch
                 git_create_new_branch(full_project_directory_path);
             }
-
         }
         git_commit(full_project_directory_path);
     }
