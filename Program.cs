@@ -70,6 +70,7 @@ public class Bundle_Watcher
         string fullPath = e.FullPath;
         var almost_project_directory = fullPath.Substring(_initial_path!.Length);
         Console.WriteLine("Something similar to project directory: " + almost_project_directory);
+        almost_project_directory.Split(new [] {Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar}, StringSplitOptions.RemoveEmptyEntries);
         if (fullPath.Contains("/.git/"))
         {
             Console.WriteLine($"Ignoring {fullPath}");
