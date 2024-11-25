@@ -12,7 +12,7 @@ create a commit on each change of the file.
 
 ## remarks aka known issues
 
-[ ] also push every commit - nah, I mean no need to do this pushing commits is not that hard and this allows for better privacy support
+[ ] also push every commit - nah, I mean no need to do this. Pushing commits is not that hard and this allows for better privacy support
 
 [ ] there are a lot of branches, I need to remove automatically them
 
