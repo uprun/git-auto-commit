@@ -11,9 +11,6 @@ This is targetting solo developers, in order to support open-development paradig
 So commit on every change
 
 ## remarks aka known issues
-probably will not work with rebasing
-
-[ ] add --verbose as a parameter
 
 [ ] also push every commit - nah, I mean no need to do this pushing commits is not that hard and this allows for better privacy support
 
