@@ -13,12 +13,9 @@ So commit on every change
 ## remarks aka known issues
 probably will not work with rebasing
 
-
 [ ] there are a lot of branches, I need to remove automatically them
 
 [ ] I need to fetch "main" branch automatically
-
-[X] fix from which folder to run git command
 
 [ ] get default branch name 
 
