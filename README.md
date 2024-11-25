@@ -10,9 +10,6 @@ create a commit on each change of the file.
 ## supported scenario:
 1) you have one "main" branch from which you create feature branches
 
-2) you are a solo developer (I will add support for multiple people later)
-
-
 ## remarks aka known issues
 
 [ ] also push every commit - nah, I mean no need to do this pushing commits is not that hard and this allows for better privacy support
