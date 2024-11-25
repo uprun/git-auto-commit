@@ -34,14 +34,15 @@ public class Bundle_Watcher
 {
     FileSystemWatcher? watcher = null;
 
-    
+    private string? _initial_path = null;
     public void Start()
     {
         if (watcher != null) return;
-        var path = Directory.GetCurrentDirectory();
-        path = Path.Join(path, "..");
-        Console.WriteLine($"watching {path}");
-        watcher = new FileSystemWatcher(path);
+        _initial_path = Directory.GetCurrentDirectory();
+        _initial_path = Path.Join(_initial_path, "..");
+        _initial_path = new DirectoryInfo(_initial_path).FullName;
+        Console.WriteLine($"watching {_initial_path}");
+        watcher = new FileSystemWatcher(_initial_path);
 
         watcher.NotifyFilter = NotifyFilters.Attributes
                                 | NotifyFilters.CreationTime
@@ -66,33 +67,44 @@ public class Bundle_Watcher
 
     private void OnChanged(object sender, FileSystemEventArgs e)
     {
-
-        if (e.FullPath.Contains("/.git/"))
+        string fullPath = e.FullPath;
+        var almost_project_directory = fullPath.Substring(_initial_path!.Length);
+        Console.WriteLine("Something similar to project directory: " + almost_project_directory);
+        var splitted = almost_project_directory.Split(new [] {Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar}, StringSplitOptions.RemoveEmptyEntries);
+        var project_directory = splitted.First();
+        Console.WriteLine($"Project is: {project_directory}" );
+        var full_project_directory_path = Path.Combine(_initial_path, project_directory);
+        if (fullPath.Contains("/.git/"))
         {
-            Console.WriteLine($"Ignoring {e.FullPath}");
+            Console.WriteLine($"Ignoring {fullPath}");
             return;
         }
 
-        if (e.FullPath.Contains("/bin/"))
+        if (fullPath.Contains("/bin/"))
         {
-            Console.WriteLine($"Ignoring {e.FullPath}");
+            Console.WriteLine($"Ignoring {fullPath}");
             return;
         }
 
-        if (e.FullPath.Contains("/obj/"))
+        if (fullPath.Contains("/obj/"))
         {
-            Console.WriteLine($"Ignoring {e.FullPath}");
+            Console.WriteLine($"Ignoring {fullPath}");
             return;
         }
-        Console.WriteLine(e.FullPath);
+        Console.WriteLine(fullPath);
         Console.WriteLine($"changes detected as of time: {DateTime.Now:HH-mm-ss:fff}");
 
-        var current_branch = git_current_branch();
+        var current_branch = git_current_branch(full_project_directory_path);
 
-        var output_git_add = git_add();
-        if (string.IsNullOrEmpty(output_git_add) == false )
+        Console.WriteLine($"Current branch name is : {current_branch}");
+
+        var output_git_add = git_add(full_project_directory_path);
+        if (string.IsNullOrEmpty(output_git_add))
         {
-            
+            Console.WriteLine("There is nothing to add, therefore no need to create a branch");
+        }
+        else
+        {
             // the idea here is if you are switching branches then there is nothing to add
             // and if there is something to add then you need a new branch
             // interesting I thought that on every change a new branch will be creates
@@ -100,19 +112,19 @@ public class Bundle_Watcher
             // this means that there will be a way more branches than I wanted
             if (current_branch.Contains("main") || current_branch.Contains("prod"))
             {
+                Console.WriteLine("Will create a new feature branch of \"main\" branch");
                 // only allow branching from "main" branch
-                git_create_new_branch();
+                git_create_new_branch(full_project_directory_path);
             }
-            
+            else
+            {
+                Console.WriteLine("Changes are present but assumption is that we are already in the feature branch, so suspending creation of a new branch");
+            }
         }
-        else
-        {
-            Console.WriteLine("There is nothing to add, therefore no need to create a branch");
-        }
-        git_commit();
+        git_commit(full_project_directory_path);
     }
 
-    private static string git_current_branch()
+    private static string git_current_branch(string workingDirectory)
     {
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
@@ -120,7 +132,8 @@ public class Bundle_Watcher
             Arguments = "branch --show-current",
             RedirectStandardOutput = true,
             UseShellExecute = false,
-            CreateNoWindow = true
+            CreateNoWindow = true,
+            WorkingDirectory = workingDirectory
         };
 
         using (Process process = Process.Start(startInfo))
@@ -133,7 +146,7 @@ public class Bundle_Watcher
         }
     }
 
-    private static string git_create_new_branch()
+    private static string git_create_new_branch(string workingDirectory)
     {
         DateTime now = DateTime.Now;
         ProcessStartInfo startInfo = new ProcessStartInfo
@@ -143,7 +156,7 @@ public class Bundle_Watcher
             RedirectStandardOutput = true,
             UseShellExecute = false,
             CreateNoWindow = true,
-            //WorkingDirectory = 
+            WorkingDirectory = workingDirectory
         };
 
         using (Process process = Process.Start(startInfo))
@@ -157,7 +170,7 @@ public class Bundle_Watcher
         }
     }
 
-    private static string git_add()
+    private static string git_add(string workingDirectory)
     {
         DateTime now = DateTime.Now;
         ProcessStartInfo startInfo = new ProcessStartInfo
@@ -167,7 +180,7 @@ public class Bundle_Watcher
             RedirectStandardOutput = true,
             UseShellExecute = false,
             CreateNoWindow = true,
-            //WorkingDirectory = 
+            WorkingDirectory = workingDirectory
         };
 
         using (Process process = Process.Start(startInfo))
@@ -181,7 +194,7 @@ public class Bundle_Watcher
         }
     }
 
-    private static string git_commit()
+    private static string git_commit(string workingDirectory)
     {
         DateTime now = DateTime.Now;
         ProcessStartInfo startInfo = new ProcessStartInfo
@@ -191,7 +204,7 @@ public class Bundle_Watcher
             RedirectStandardOutput = true,
             UseShellExecute = false,
             CreateNoWindow = true,
-            //WorkingDirectory = 
+            WorkingDirectory = workingDirectory
         };
 
         using (Process process = Process.Start(startInfo))
