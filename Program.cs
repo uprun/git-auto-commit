@@ -40,6 +40,7 @@ public class Bundle_Watcher
         if (watcher != null) return;
         _initial_path = Directory.GetCurrentDirectory();
         _initial_path = Path.Join(_initial_path, "..");
+        new DirectoryInfo(_initial_path).FullName;
         Console.WriteLine($"watching {_initial_path}");
         watcher = new FileSystemWatcher(_initial_path);
 
