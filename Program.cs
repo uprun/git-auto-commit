@@ -213,7 +213,7 @@ public class Bundle_Watcher
             using (StreamReader reader = process.StandardOutput)
             {
                 string result = reader.ReadToEnd();
-                Console.WriteLine(result);
+                //Console.WriteLine(result);
                 return result;
             }
         }
