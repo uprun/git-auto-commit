@@ -96,6 +96,8 @@ public class Bundle_Watcher
 
         var current_branch = git_current_branch(full_project_directory_path);
 
+        
+
         var output_git_add = git_add(full_project_directory_path);
         if (string.IsNullOrEmpty(output_git_add) == false )
         {
