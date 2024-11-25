@@ -16,7 +16,7 @@ create a commit on each change of the file.
 
 [ ] there are a lot of branches, I need to remove automatically them
 
-[ ] get default branch name 
+[ ] get default branch name (not everyone uses Main or prod)
 
 [ ] run own instance of git-server with withible commit details
 # Support on Patreon
