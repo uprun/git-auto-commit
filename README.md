@@ -13,8 +13,6 @@ So commit on every change
 ## remarks aka known issues
 probably will not work with rebasing
 
-[X] make less verbose output
-
 [ ] there are a lot of branches, I need to remove automatically them
 
 [ ] I need to fetch "main" branch automatically
