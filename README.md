@@ -13,7 +13,6 @@ So commit on every change
 ## remarks aka known issues
 probably will not work with rebasing
 
-[X] switch to main branch does not work from the first time (fixed now)
 
 [ ] there are a lot of branches, I need to remove automatically them
 
