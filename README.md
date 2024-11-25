@@ -7,7 +7,7 @@ create a commit on each change of the file.
 
 
 
-## supported scenarios
+## supported scenario:
 1) you have one "main" branch from which you create feature branches
 
 2) you are a solo developer (I will add support for multiple people later)
