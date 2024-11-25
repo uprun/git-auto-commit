@@ -12,9 +12,6 @@ create a commit on each change of the file.
 
 2) you are a solo developer (I will add support for multiple people later)
 
-## goals of the project:
-This is targetting solo developers, in order to support open-development paradigm
-So commit on every change
 
 ## remarks aka known issues
 
