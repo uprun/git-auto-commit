@@ -1,4 +1,5 @@
 # git-auto-commit
+Have you ever wondered what 
 creates a commit on each change of the file
 
 ## supported scenarios
