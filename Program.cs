@@ -99,7 +99,7 @@ public class Bundle_Watcher
         Console.WriteLine($"Current branch name is : {current_branch}");
 
         var output_git_add = git_add(full_project_directory_path);
-        if (string.IsNullOrEmpty(output_git_add) != false)
+        if (string.IsNullOrEmpty(output_git_add))
         {
             Console.WriteLine("There is nothing to add, therefore no need to create a branch");
         }
