@@ -34,7 +34,7 @@ public class Bundle_Watcher
 {
     FileSystemWatcher? watcher = null;
 
-    
+    private string? _initial_path = null;
     public void Start()
     {
         if (watcher != null) return;
