@@ -99,9 +99,13 @@ public class Bundle_Watcher
         Console.WriteLine($"Current branch name is : {current_branch}");
 
         var output_git_add = git_add(full_project_directory_path);
-        if (string.IsNullOrEmpty(output_git_add) == false )
+        if (string.IsNullOrEmpty(output_git_add) != false)
         {
-            
+            Console.WriteLine("There is nothing to add, therefore no need to create a branch");
+        }
+        else
+        {
+
             // the idea here is if you are switching branches then there is nothing to add
             // and if there is something to add then you need a new branch
             // interesting I thought that on every change a new branch will be creates
@@ -112,11 +116,7 @@ public class Bundle_Watcher
                 // only allow branching from "main" branch
                 git_create_new_branch(full_project_directory_path);
             }
-            
-        }
-        else
-        {
-            Console.WriteLine("There is nothing to add, therefore no need to create a branch");
+
         }
         git_commit(full_project_directory_path);
     }
