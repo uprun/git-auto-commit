@@ -96,7 +96,7 @@ public class Bundle_Watcher
 
         var current_branch = git_current_branch(full_project_directory_path);
 
-        var output_git_add = git_add();
+        var output_git_add = git_add(full_project_directory_path);
         if (string.IsNullOrEmpty(output_git_add) == false )
         {
             
@@ -108,7 +108,7 @@ public class Bundle_Watcher
             if (current_branch.Contains("main") || current_branch.Contains("prod"))
             {
                 // only allow branching from "main" branch
-                git_create_new_branch();
+                git_create_new_branch(full_project_directory_path);
             }
             
         }
@@ -116,7 +116,7 @@ public class Bundle_Watcher
         {
             Console.WriteLine("There is nothing to add, therefore no need to create a branch");
         }
-        git_commit();
+        git_commit(full_project_directory_path);
     }
 
     private static string git_current_branch(string workingDirectory)
