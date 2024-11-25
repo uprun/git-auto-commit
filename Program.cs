@@ -73,6 +73,7 @@ public class Bundle_Watcher
         var splitted = almost_project_directory.Split(new [] {Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar}, StringSplitOptions.RemoveEmptyEntries);
         var project_directory = splitted.First();
         Console.WriteLine($"Project is: {project_directory}" );
+        var full_project_directory_path = Path.Combine(_initial_path, project_directory);
         if (fullPath.Contains("/.git/"))
         {
             Console.WriteLine($"Ignoring {fullPath}");
