@@ -19,7 +19,7 @@ probably will not work with rebasing
 
 [ ] I need to fetch "main" branch automatically
 
-[ ] fix from which folder to run git command
+[X] fix from which folder to run git command
 
 [ ] get default branch name 
 
