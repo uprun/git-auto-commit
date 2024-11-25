@@ -76,23 +76,23 @@ public class Bundle_Watcher
         var full_project_directory_path = Path.Combine(_initial_path, project_directory);
         if (fullPath.Contains("/.git/"))
         {
-            Console.WriteLine($"Ignoring {fullPath}");
+            //Console.WriteLine($"Ignoring {fullPath}");
             return;
         }
 
         if (fullPath.Contains("/bin/"))
         {
-            Console.WriteLine($"Ignoring {fullPath}");
+            //Console.WriteLine($"Ignoring {fullPath}");
             return;
         }
 
         if (fullPath.Contains("/obj/"))
         {
-            Console.WriteLine($"Ignoring {fullPath}");
+            //Console.WriteLine($"Ignoring {fullPath}");
             return;
         }
         Console.WriteLine(fullPath);
-        
+
         Console.WriteLine($"changes detected as of time: {DateTime.Now:HH-mm-ss:fff}");
 
         var current_branch = git_current_branch(full_project_directory_path);
