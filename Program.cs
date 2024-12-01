@@ -128,6 +128,9 @@ public class Bundle_Watcher
             {
                 Console.WriteLine("Will create a new feature branch of \"main\" branch");
                 // only allow branching from "main" branch
+                DateTime now = DateTime.Now;
+                var branch_name = $"{now:yyyy-MM-dd--HH}h{now:mm}m";
+                var argumnets = $"checkout -b {branch_name}";
                 git_create_new_branch(full_project_directory_path);
             }
             else
