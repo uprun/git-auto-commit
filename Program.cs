@@ -99,7 +99,8 @@ public class Bundle_Watcher
 
         if (current_branch.Contains(" not a git repository "))
         {
-            Console.WriteLine("")
+            Console.WriteLine("Not a git repository");
+            return;
         }
 
         Console.WriteLine($"Current branch name is : {current_branch}");
