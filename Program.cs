@@ -157,6 +157,7 @@ public class Bundle_Watcher
                 output = reader.ReadToEnd();
             }
         }
+        return (output, error);
     }
 
     private static string git_create_new_branch(string workingDirectory)
