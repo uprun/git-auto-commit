@@ -64,7 +64,7 @@ public class Bundle_Watcher
         watcher.IncludeSubdirectories = true;
         watcher.EnableRaisingEvents = true;
 
-    }
+    } 
 
     private void OnChanged(object sender, FileSystemEventArgs e)
     {
@@ -112,8 +112,11 @@ public class Bundle_Watcher
 
         Console.WriteLine($"Current branch name is : {current_branch}");
 
-        var output_git_add = git_add(full_project_directory_path);
-        if (string.IsNullOrEmpty(output_git_add))
+        var output_git_add = run_process(full_project_directory_path, "git", $"add . --verbose");
+        Console.WriteLine(output_git_add.output);
+
+        DateTime now = DateTime.Now;
+        if (string.IsNullOrEmpty(output_git_add.output))
         {
             Console.WriteLine("There is nothing to add, therefore no need to create a branch");
         }
@@ -128,7 +131,7 @@ public class Bundle_Watcher
             {
                 Console.WriteLine("Will create a new feature branch of \"main\" branch");
                 // only allow branching from "main" branch
-                DateTime now = DateTime.Now;
+                
                 var branch_name = $"{now:yyyy-MM-dd--HH}h{now:mm}m";
                 var (checkout_output, checkout_error) = run_process(full_project_directory_path, "git", $"checkout -b {branch_name}");
                 if (String.IsNullOrEmpty(checkout_error))
@@ -140,23 +143,8 @@ public class Bundle_Watcher
             {
                 Console.WriteLine("Changes are present but assumption is that we are already in the feature branch, so suspending creation of a new branch");
             }
-            git_commit(full_project_directory_path); 
-
-            var (run_process_output, run_process_error) = run_process(full_project_directory_path, "git", "push");
-            Console.WriteLine(run_process_output);
-            if (run_process_error.Contains("To push the current branch and set the remote as upstream,"))
-            { //?
-                Console.WriteLine($"Failed to push: {run_process_error}");
-                var (push_set_upstream_origin__output, push_set_upstream_origin__error ) = 
-                    run_process(full_project_directory_path, "git", $"push --set-upstream origin {current_branch} --verbose");
-                Console.WriteLine(push_set_upstream_origin__output); 
-                // why failed upstream push?
-                if (push_set_upstream_origin__error.pipe_check(String.IsNullOrEmpty) == false)
-                {
-                    Console.WriteLine($"!!!! failed to push up-stream {push_set_upstream_origin__error}");
-                } 
-
-            }
+            //$"commit -m \"{now:yyyy-MM-dd--HH}h{now:mm}m{now:ss}s\""
+            run_process(full_project_directory_path, "git", $"commit -m \"{now:yyyy-MM-dd--HH}h{now:mm}m{now:ss}s\"");
 
 
         }
@@ -202,60 +190,5 @@ public class Bundle_Watcher
         }
         return (output, error);
     }
-
-    private static string git_add(string workingDirectory)
-    {
-        DateTime now = DateTime.Now;
-        ProcessStartInfo startInfo = new ProcessStartInfo
-        {
-            FileName = "git",
-            Arguments = $"add . --verbose",
-            RedirectStandardOutput = true,
-            UseShellExecute = false,
-            CreateNoWindow = true,
-            WorkingDirectory = workingDirectory
-        };
-
-        using (Process process = Process.Start(startInfo))
-        {
-            using (StreamReader reader = process.StandardOutput)
-            {
-                string result = reader.ReadToEnd();
-                Console.WriteLine(result);
-                return result;
-            }
-        }
-    }
-
-    private static string git_commit(string workingDirectory)
-    {
-        DateTime now = DateTime.Now;
-        ProcessStartInfo startInfo = new ProcessStartInfo
-        {
-            FileName = "git",
-            Arguments = $"commit -m \"{now:yyyy-MM-dd--HH}h{now:mm}m{now:ss}s\"",
-            RedirectStandardOutput = true,
-            UseShellExecute = false,
-            CreateNoWindow = true,
-            WorkingDirectory = workingDirectory
-        };
-
-        using (Process process = Process.Start(startInfo))
-        {
-            using (StreamReader reader = process.StandardOutput)
-            {
-                string result = reader.ReadToEnd();
-                //Console.WriteLine(result);
-                return result;
-            }
-        }
-    }
-
-
-
-
-
-
-
 
 }
