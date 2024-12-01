@@ -175,12 +175,12 @@ public class Bundle_Watcher
         {
             FileName = program,
             Arguments = arguments, 
-            RedirectStandardOutput = true,
-            UseShellExecute = true,
+            
+            UseShellExecute = false, // this might work
             CreateNoWindow = true,
             WorkingDirectory = workingDirectory,
             RedirectStandardError = true,
-
+            RedirectStandardOutput = true,
         };
 
         var error = "";
