@@ -136,7 +136,7 @@ public class Bundle_Watcher
             }
             git_commit(full_project_directory_path);
 
-            RunProcess(full_project_directory_path, "git", "push");
+            run_process(full_project_directory_path, "git", "push");
 
         }
         
@@ -146,10 +146,10 @@ public class Bundle_Watcher
     {
         string program = "git";
         string arguments = "branch --show-current";
-        return RunProcess(workingDirectory, program, arguments);
+        return run_process(workingDirectory, program, arguments);
     }
 
-    private static (string output, string error) RunProcess(string workingDirectory, string program, string arguments)
+    private static (string output, string error) run_process(string workingDirectory, string program, string arguments)
     {
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
