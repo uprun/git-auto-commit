@@ -150,8 +150,7 @@ public class Bundle_Watcher
         {
             using (StreamReader reader = process.StandardError)
             {
-                string result = reader.ReadToEnd();
-                return result;
+                error = reader.ReadToEnd();
             }
             using (StreamReader reader = process.StandardOutput)
             {
