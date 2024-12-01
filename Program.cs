@@ -143,7 +143,7 @@ public class Bundle_Watcher
             git_commit(full_project_directory_path); 
 
             var (run_process_output, run_process_error) = run_process(full_project_directory_path, "git", "push");
-            if (String.IsNullOrEmpty( run_process_error ) == false)
+            if (run_process_error.Contains("To push the current branch and set the remote as upstream,"))
             {
                 Console.WriteLine($"Failed to push: {run_process_error}");
                 var (push_set_upstream_origin__output, push_set_upstream_origin__error ) = 
