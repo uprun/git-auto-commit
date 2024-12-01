@@ -144,10 +144,10 @@ public class Bundle_Watcher
     {
         string program = "git";
         string arguments = "branch --show-current";
-        return NewMethod(workingDirectory, program, arguments);
+        return RunProcess(workingDirectory, program, arguments);
     }
 
-    private static (string output, string error) NewMethod(string workingDirectory, string program, string arguments)
+    private static (string output, string error) RunProcess(string workingDirectory, string program, string arguments)
     {
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
