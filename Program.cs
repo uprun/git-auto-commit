@@ -165,7 +165,7 @@ public class Bundle_Watcher
             }
             catch
             {
-
+                Console.WriteLine("Failed to read error output");
             }
             
             using (StreamReader reader = process.StandardOutput)
