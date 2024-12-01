@@ -170,6 +170,7 @@ public class Bundle_Watcher
             WorkingDirectory = workingDirectory,
             RedirectStandardError = true, //
             RedirectStandardOutput = true
+            // no user name after all
         };
 
         var error = "";
