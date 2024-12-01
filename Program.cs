@@ -146,7 +146,8 @@ public class Bundle_Watcher
             RedirectStandardOutput = true,
             UseShellExecute = false,
             CreateNoWindow = true,
-            WorkingDirectory = workingDirectory
+            WorkingDirectory = workingDirectory,
+            
         };
 
         var error = "";
@@ -154,10 +155,18 @@ public class Bundle_Watcher
 
         using (Process process = Process.Start(startInfo))
         {
-            using (StreamReader reader = process.StandardError)
+            try
             {
-                error = reader.ReadToEnd();
+                using (StreamReader reader = process.StandardError)
+                {
+                    error = reader.ReadToEnd();
+                }
             }
+            catch
+            {
+
+            }
+            
             using (StreamReader reader = process.StandardOutput)
             {
                 output = reader.ReadToEnd();
