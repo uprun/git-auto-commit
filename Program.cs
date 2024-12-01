@@ -95,7 +95,19 @@ public class Bundle_Watcher
 
         Console.WriteLine($"changes detected as of time: {DateTime.Now:HH-mm-ss:fff}");
 
-        var current_branch = git_current_branch(full_project_directory_path);
+        var (current_branch, current_branch_error) = git_current_branch(full_project_directory_path);
+
+        if (current_branch_error.Contains(" not a git repository "))
+        {
+            Console.WriteLine("!!!!!Not a git repository");
+            return;
+        }
+
+        if (current_branch.Contains(" not a git repository "))
+        {
+            Console.WriteLine("Not a git repository");
+            return;
+        }
 
         Console.WriteLine($"Current branch name is : {current_branch}");
 
@@ -125,7 +137,7 @@ public class Bundle_Watcher
         git_commit(full_project_directory_path);
     }
 
-    private static string git_current_branch(string workingDirectory)
+    private static (string output, string error) git_current_branch(string workingDirectory)
     {
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
@@ -134,17 +146,27 @@ public class Bundle_Watcher
             RedirectStandardOutput = true,
             UseShellExecute = false,
             CreateNoWindow = true,
-            WorkingDirectory = workingDirectory
+            WorkingDirectory = workingDirectory,
+            RedirectStandardError = true,
+            
         };
+
+        var error = "";
+        var output = "";
 
         using (Process process = Process.Start(startInfo))
         {
+            using (StreamReader reader = process.StandardError)
+            {
+                error = reader.ReadToEnd();
+            }
+            
             using (StreamReader reader = process.StandardOutput)
             {
-                string result = reader.ReadToEnd();
-                return result;
+                output = reader.ReadToEnd();
             }
         }
+        return (output, error);
     }
 
     private static string git_create_new_branch(string workingDirectory)
