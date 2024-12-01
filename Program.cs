@@ -143,7 +143,7 @@ public class Bundle_Watcher
     private static (string output, string error) git_current_branch(string workingDirectory)
     {
         string program = "git";
-        private const string arguments = "branch --show-current";
+        string arguments = "branch --show-current";
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
             FileName = program,
