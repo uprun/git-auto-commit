@@ -176,7 +176,7 @@ public class Bundle_Watcher
             FileName = program,
             Arguments = arguments, 
             
-            UseShellExecute = false, // this might work
+            UseShellExecute = false,
             CreateNoWindow = true,
             WorkingDirectory = workingDirectory,
             RedirectStandardError = true,
