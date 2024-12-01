@@ -32,7 +32,6 @@ while(true)
 
 public class Bundle_Watcher
 {
-    private const string V = "git";
     FileSystemWatcher? watcher = null;
 
     private string? _initial_path = null;
