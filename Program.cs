@@ -131,7 +131,7 @@ public class Bundle_Watcher
         git_commit(full_project_directory_path);
     }
 
-    private static string git_current_branch(string workingDirectory)
+    private static (string output, string error) git_current_branch(string workingDirectory)
     {
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
