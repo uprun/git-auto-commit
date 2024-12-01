@@ -32,6 +32,7 @@ while(true)
 
 public class Bundle_Watcher
 {
+    
     FileSystemWatcher? watcher = null;
 
     private string? _initial_path = null;
@@ -142,10 +143,11 @@ public class Bundle_Watcher
     private static (string output, string error) git_current_branch(string workingDirectory)
     {
         string program = "git";
+        private const string arguments = "branch --show-current";
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
             FileName = program,
-            Arguments = "branch --show-current",
+            Arguments = arguments,
             RedirectStandardOutput = true,
             UseShellExecute = false,
             CreateNoWindow = true,
