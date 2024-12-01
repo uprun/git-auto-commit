@@ -151,7 +151,7 @@ public class Bundle_Watcher
                 if (push_set_upstream_origin__error.pipe_check(String.IsNullOrEmpty) == false)
                 {
                     Console.WriteLine($"!!!! failed to push up-stream {push_set_upstream_origin__error}");
-                }
+                } 
 
             }
 
