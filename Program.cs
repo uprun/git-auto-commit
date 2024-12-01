@@ -196,7 +196,7 @@ public class Bundle_Watcher
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
             FileName = "git",
-            Arguments = $"add . --verbose",
+            Arguments = ,
             RedirectStandardOutput = true,
             UseShellExecute = false,
             CreateNoWindow = true,
