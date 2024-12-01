@@ -64,7 +64,7 @@ public class Bundle_Watcher
         watcher.IncludeSubdirectories = true;
         watcher.EnableRaisingEvents = true;
 
-    }
+    } 
 
     private void OnChanged(object sender, FileSystemEventArgs e)
     {
