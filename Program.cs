@@ -143,6 +143,7 @@ public class Bundle_Watcher
             git_commit(full_project_directory_path);
 
             var (run_process_output, run_process_error) = run_process(full_project_directory_path, "git", "push");
+            if (run)
 
 
         }
