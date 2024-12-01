@@ -130,7 +130,7 @@ public class Bundle_Watcher
                 // only allow branching from "main" branch
                 DateTime now = DateTime.Now;
                 var branch_name = $"{now:yyyy-MM-dd--HH}h{now:mm}m";
-                var ()run_process(full_project_directory_path, "git", $"checkout -b {branch_name}");
+                var (checkout_output, checkout_error) = run_process(full_project_directory_path, "git", $"checkout -b {branch_name}");
             }
             else
             {
