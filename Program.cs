@@ -145,7 +145,7 @@ public class Bundle_Watcher
             var (run_process_output, run_process_error) = run_process(full_project_directory_path, "git", "push");
             if (String.IsNullOrEmpty( run_process_error ) == false)
             {
-                
+                git push --set-upstream origin
             }
 
 
