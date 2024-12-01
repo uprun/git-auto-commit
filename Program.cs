@@ -80,18 +80,7 @@ public class Bundle_Watcher
             //Console.WriteLine($"Ignoring {fullPath}");
             return;
         }
-
-        if (fullPath.Contains("/bin/"))
-        {
-            //Console.WriteLine($"Ignoring {fullPath}");
-            return;
-        }
-
-        if (fullPath.Contains("/obj/"))
-        {
-            //Console.WriteLine($"Ignoring {fullPath}");
-            return;
-        }
+        // no need to filter out bin and obj they should not be added because of .gitignore config
         Console.WriteLine(fullPath);
 
         Console.WriteLine($"changes detected as of time: {DateTime.Now:HH-mm-ss:fff}");
