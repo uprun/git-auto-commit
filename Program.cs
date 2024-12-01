@@ -133,7 +133,7 @@ public class Bundle_Watcher
                 var (checkout_output, checkout_error) = run_process(full_project_directory_path, "git", $"checkout -b {branch_name}");
                 if (String.IsNullOrEmpty(checkout_error))
                 {
-                    
+                    current_branch = branch_name;
                 }
             }
             else
