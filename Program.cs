@@ -179,7 +179,7 @@ public class Bundle_Watcher
             UseShellExecute = false,
             CreateNoWindow = true,
             WorkingDirectory = workingDirectory,
-            RedirectStandardError = true,
+            RedirectStandardError = true, //
             RedirectStandardOutput = true,
         };
 
