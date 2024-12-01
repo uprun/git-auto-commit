@@ -81,17 +81,6 @@ public class Bundle_Watcher
             return;
         }
 
-        if (fullPath.Contains("/bin/"))
-        {
-            //Console.WriteLine($"Ignoring {fullPath}");
-            return;
-        }
-
-        if (fullPath.Contains("/obj/"))
-        {
-            //Console.WriteLine($"Ignoring {fullPath}");
-            return;
-        }
         Console.WriteLine(fullPath);
 
         Console.WriteLine($"changes detected as of time: {DateTime.Now:HH-mm-ss:fff}");
