@@ -170,6 +170,7 @@ public class Bundle_Watcher
 
     private static (string output, string error) run_process(string workingDirectory, string program, string arguments)
     {
+        Console.WriteLine($"running: {program} {arguments}");
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
             FileName = program,
