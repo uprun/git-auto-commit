@@ -95,7 +95,7 @@ public class Bundle_Watcher
 
         Console.WriteLine($"changes detected as of time: {DateTime.Now:HH-mm-ss:fff}");
 
-        var (current_branch = git_current_branch(full_project_directory_path);
+        var (current_branch, current_branch_error) = git_current_branch(full_project_directory_path);
 
         if (current_branch.Contains(" not a git repository "))
         {
