@@ -131,7 +131,7 @@ public class Bundle_Watcher
                 DateTime now = DateTime.Now;
                 var branch_name = $"{now:yyyy-MM-dd--HH}h{now:mm}m";
                 var argumnets = ;
-                run_process(full_project_directory_path, "git", $"checkout -b {branch_name}")
+                run_process(full_project_directory_path, "git", $"checkout -b {branch_name}");
                 git_create_new_branch(full_project_directory_path);
             }
             else
