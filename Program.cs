@@ -217,7 +217,7 @@ public class Bundle_Watcher
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
             FileName = "git",
-            Arguments = $"commit -m \"{now:yyyy-MM-dd--HH}h{now:mm}m{now:ss}s\"",
+            Arguments = ,
             RedirectStandardOutput = true,
             UseShellExecute = false,
             CreateNoWindow = true,
