@@ -186,7 +186,7 @@ public class Bundle_Watcher
     {
         DateTime now = DateTime.Now;
         var branch_name = $"{now:yyyy-MM-dd--HH}h{now:mm}m";
-        var argumnets =$"checkout -b {branch_name}";
+        var argumnets = $"checkout -b {branch_name}";
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
             FileName = "git",
