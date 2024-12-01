@@ -147,7 +147,7 @@ public class Bundle_Watcher
             {
                 var (push_set_upstream_origin__output, push_set_upstream_origin__error ) = 
                     run_process(full_project_directory_path, "git", $"push --set-upstream origin {current_branch}");
-                if (push_set_upstream_origin__error.|>)
+                if (push_set_upstream_origin__error.pipe)
 
             }
 
