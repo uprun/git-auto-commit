@@ -175,13 +175,13 @@ public class Bundle_Watcher
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
             FileName = program,
-            Arguments = arguments, 
-            ErrorDialog = true,
+            Arguments = arguments,  
             UseShellExecute = false,
             CreateNoWindow = true,
             WorkingDirectory = workingDirectory,
             RedirectStandardError = true, //
             RedirectStandardOutput = true,
+            UserName = "almostfox"
         };
 
         var error = "";
