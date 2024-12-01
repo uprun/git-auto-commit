@@ -174,7 +174,7 @@ public class Bundle_Watcher
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
             FileName = program,
-            Arguments = arguments,
+            Arguments = arguments, 
             RedirectStandardOutput = true,
             UseShellExecute = false,
             CreateNoWindow = true,
