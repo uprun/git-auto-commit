@@ -175,7 +175,6 @@ public class Bundle_Watcher
         {
             FileName = program,
             Arguments = arguments, 
-            LoadUserProfile = true,
             UseShellExecute = false,
             CreateNoWindow = true,
             WorkingDirectory = workingDirectory,
