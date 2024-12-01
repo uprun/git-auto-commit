@@ -112,7 +112,7 @@ public class Bundle_Watcher
 
         Console.WriteLine($"Current branch name is : {current_branch}");
 
-        var output_git_add = git_add(full_project_directory_path);
+        var output_git_add = run_process(full_project_directory_path, "git", $"add . --verbose");
 
         DateTime now = DateTime.Now;
         if (string.IsNullOrEmpty(output_git_add))
