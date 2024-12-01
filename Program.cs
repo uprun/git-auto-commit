@@ -116,7 +116,7 @@ public class Bundle_Watcher
         Console.WriteLine(output_git_add.output);
 
         DateTime now = DateTime.Now;
-        if (string.IsNullOrEmpty(output_git_add))
+        if (string.IsNullOrEmpty(output_git_add.output))
         {
             Console.WriteLine("There is nothing to add, therefore no need to create a branch");
         }
