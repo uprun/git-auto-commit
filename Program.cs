@@ -143,11 +143,14 @@ public class Bundle_Watcher
             git_commit(full_project_directory_path); 
 
             var (run_process_output, run_process_error) = run_process(full_project_directory_path, "git", "push");
-            if (String.IsNullOrEmpty( run_process_error ) == false)
-            {
+            Console.WriteLine(run_process_output);
+            if (run_process_error.Contains("To push the current branch and set the remote as upstream,"))
+            { //?
                 Console.WriteLine($"Failed to push: {run_process_error}");
                 var (push_set_upstream_origin__output, push_set_upstream_origin__error ) = 
-                    run_process(full_project_directory_path, "git", $"push --set-upstream origin {current_branch}");
+                    run_process(full_project_directory_path, "git", $"push --set-upstream origin {current_branch} --verbose");
+                Console.WriteLine(push_set_upstream_origin__output); 
+                // why failed upstream push?
                 if (push_set_upstream_origin__error.pipe_check(String.IsNullOrEmpty) == false)
                 {
                     Console.WriteLine($"!!!! failed to push up-stream {push_set_upstream_origin__error}");
@@ -169,16 +172,17 @@ public class Bundle_Watcher
 
     private static (string output, string error) run_process(string workingDirectory, string program, string arguments)
     {
+        Console.WriteLine($"running: {program} {arguments}");
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
             FileName = program,
-            Arguments = arguments,
-            RedirectStandardOutput = true,
+            Arguments = arguments,  
             UseShellExecute = false,
             CreateNoWindow = true,
             WorkingDirectory = workingDirectory,
-            RedirectStandardError = true,
-
+            RedirectStandardError = true, //
+            RedirectStandardOutput = true,
+            UserName = "almostfox"
         };
 
         var error = "";
