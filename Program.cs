@@ -169,8 +169,8 @@ public class Bundle_Watcher
             CreateNoWindow = true,
             WorkingDirectory = workingDirectory,
             RedirectStandardError = true, //
-            RedirectStandardOutput = true,
-            UserName = "almostfox"
+            RedirectStandardOutput = true
+            // no user name after all
         };
 
         var error = "";
