@@ -184,9 +184,6 @@ public class Bundle_Watcher
 
     private static string git_create_new_branch(string workingDirectory)
     {
-        DateTime now = DateTime.Now;
-        var branch_name = $"{now:yyyy-MM-dd--HH}h{now:mm}m";
-        var argumnets = $"checkout -b {branch_name}";
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
             FileName = "git",
