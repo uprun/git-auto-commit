@@ -144,6 +144,11 @@ public class Bundle_Watcher
     {
         string program = "git";
         string arguments = "branch --show-current";
+        return NewMethod(workingDirectory, program, arguments);
+    }
+
+    private static (string output, string error) NewMethod(string workingDirectory, string program, string arguments)
+    {
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
             FileName = program,
@@ -153,7 +158,7 @@ public class Bundle_Watcher
             CreateNoWindow = true,
             WorkingDirectory = workingDirectory,
             RedirectStandardError = true,
-            
+
         };
 
         var error = "";
@@ -165,7 +170,7 @@ public class Bundle_Watcher
             {
                 error = reader.ReadToEnd();
             }
-            
+
             using (StreamReader reader = process.StandardOutput)
             {
                 output = reader.ReadToEnd();
