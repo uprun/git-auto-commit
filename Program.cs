@@ -149,7 +149,7 @@ public class Bundle_Watcher
                     run_process(full_project_directory_path, "git", $"push --set-upstream origin {current_branch}");
                 if (push_set_upstream_origin__error.pipe_check(String.IsNullOrEmpty) == false)
                 {
-                    Console.WriteLine("!!!! failed to push up-stream")
+                    Console.WriteLine("!!!! failed to push up-stream");
                 }
 
             }
