@@ -141,10 +141,10 @@ public class Bundle_Watcher
 
     private static (string output, string error) git_current_branch(string workingDirectory)
     {
-        string V = "git";
+        string program = "git";
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
-            FileName = V,
+            FileName = program,
             Arguments = "branch --show-current",
             RedirectStandardOutput = true,
             UseShellExecute = false,
