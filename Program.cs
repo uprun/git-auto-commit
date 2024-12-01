@@ -136,6 +136,8 @@ public class Bundle_Watcher
             }
             git_commit(full_project_directory_path);
 
+            RunProcess(full_project_directory_path, "git", "push");
+
         }
         
     }
