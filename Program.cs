@@ -154,8 +154,7 @@ public class Bundle_Watcher
             }
             using (StreamReader reader = process.StandardOutput)
             {
-                string result = reader.ReadToEnd();
-                return result;
+                output = reader.ReadToEnd();
             }
         }
     }
