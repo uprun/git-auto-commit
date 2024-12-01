@@ -143,6 +143,9 @@ public class Bundle_Watcher
             WorkingDirectory = workingDirectory
         };
 
+        var error = "";
+        var output = "";
+
         using (Process process = Process.Start(startInfo))
         {
             using (StreamReader reader = process.StandardError)
