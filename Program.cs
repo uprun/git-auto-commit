@@ -145,7 +145,11 @@ public class Bundle_Watcher
 
         using (Process process = Process.Start(startInfo))
         {
-            process.StandardError
+            using (StreamReader reader = process.StandardError)
+            {
+                string result = reader.ReadToEnd();
+                return result;
+            }
             using (StreamReader reader = process.StandardOutput)
             {
                 string result = reader.ReadToEnd();
