@@ -148,6 +148,7 @@ public class Bundle_Watcher
                 Console.WriteLine($"Failed to push: {run_process_error}");
                 var (push_set_upstream_origin__output, push_set_upstream_origin__error ) = 
                     run_process(full_project_directory_path, "git", $"push --set-upstream origin {current_branch} --verbose");
+                Console.WriteLine(push_set_upstream_origin__output);
                 // why failed upstream push?
                 if (push_set_upstream_origin__error.pipe_check(String.IsNullOrEmpty) == false)
                 {
