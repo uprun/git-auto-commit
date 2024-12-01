@@ -137,7 +137,7 @@ public class Bundle_Watcher
             git_commit(full_project_directory_path);
 
             var (run_process_output, run_process_error) = run_process(full_project_directory_path, "git", "push");
-            
+
 
         }
         
@@ -185,10 +185,11 @@ public class Bundle_Watcher
     private static string git_create_new_branch(string workingDirectory)
     {
         DateTime now = DateTime.Now;
+        var branch_name = {now:yyyy-MM-dd--HH}h{now:mm}m
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
             FileName = "git",
-            Arguments = $"checkout -b {now:yyyy-MM-dd--HH}h{now:mm}m",
+            Arguments = $"checkout -b ",
             RedirectStandardOutput = true,
             UseShellExecute = false,
             CreateNoWindow = true,
