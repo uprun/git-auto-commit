@@ -142,7 +142,7 @@ public class Bundle_Watcher
             }
             //$"commit -m \"{now:yyyy-MM-dd--HH}h{now:mm}m{now:ss}s\""
             DateTime now = DateTime.Now;
-            run_process(full_project_directory_path, "git", $"commit -m \"{now:yyyy-MM-dd--HH}h{now:mm}m{now:ss}s\"")
+            run_process(full_project_directory_path, "git", $"commit -m \"{now:yyyy-MM-dd--HH}h{now:mm}m{now:ss}s\"");
 
 
         }
