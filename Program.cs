@@ -113,6 +113,8 @@ public class Bundle_Watcher
         Console.WriteLine($"Current branch name is : {current_branch}");
 
         var output_git_add = git_add(full_project_directory_path);
+ 
+        DateTime now = DateTime.Now;
         if (string.IsNullOrEmpty(output_git_add))
         {
             Console.WriteLine("There is nothing to add, therefore no need to create a branch");
@@ -128,7 +130,7 @@ public class Bundle_Watcher
             {
                 Console.WriteLine("Will create a new feature branch of \"main\" branch");
                 // only allow branching from "main" branch
-                DateTime now = DateTime.Now;
+                
                 var branch_name = $"{now:yyyy-MM-dd--HH}h{now:mm}m";
                 var (checkout_output, checkout_error) = run_process(full_project_directory_path, "git", $"checkout -b {branch_name}");
                 if (String.IsNullOrEmpty(checkout_error))
@@ -141,7 +143,6 @@ public class Bundle_Watcher
                 Console.WriteLine("Changes are present but assumption is that we are already in the feature branch, so suspending creation of a new branch");
             }
             //$"commit -m \"{now:yyyy-MM-dd--HH}h{now:mm}m{now:ss}s\""
-            DateTime now = DateTime.Now;
             run_process(full_project_directory_path, "git", $"commit -m \"{now:yyyy-MM-dd--HH}h{now:mm}m{now:ss}s\"");
 
 
@@ -212,36 +213,5 @@ public class Bundle_Watcher
             }
         }
     }
-
-    private static string git_commit(string workingDirectory)
-    {
-        
-        ProcessStartInfo startInfo = new ProcessStartInfo
-        {
-            FileName = "git",
-            Arguments = ,
-            RedirectStandardOutput = true,
-            UseShellExecute = false,
-            CreateNoWindow = true,
-            WorkingDirectory = workingDirectory
-        };
-
-        using (Process process = Process.Start(startInfo))
-        {
-            using (StreamReader reader = process.StandardOutput)
-            {
-                string result = reader.ReadToEnd();
-                //Console.WriteLine(result);
-                return result;
-            }
-        }
-    }
-
-
-
-
-
-
-
 
 }
