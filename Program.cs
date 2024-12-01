@@ -32,6 +32,7 @@ while(true)
 
 public class Bundle_Watcher
 {
+    
     FileSystemWatcher? watcher = null;
 
     private string? _initial_path = null;
@@ -127,28 +128,57 @@ public class Bundle_Watcher
             {
                 Console.WriteLine("Will create a new feature branch of \"main\" branch");
                 // only allow branching from "main" branch
-                git_create_new_branch(full_project_directory_path);
+                DateTime now = DateTime.Now;
+                var branch_name = $"{now:yyyy-MM-dd--HH}h{now:mm}m";
+                var (checkout_output, checkout_error) = run_process(full_project_directory_path, "git", $"checkout -b {branch_name}");
+                if (String.IsNullOrEmpty(checkout_error))
+                {
+                    current_branch = branch_name;
+                }
             }
             else
             {
                 Console.WriteLine("Changes are present but assumption is that we are already in the feature branch, so suspending creation of a new branch");
             }
+            git_commit(full_project_directory_path); 
+
+            var (run_process_output, run_process_error) = run_process(full_project_directory_path, "git", "push");
+            if (String.IsNullOrEmpty( run_process_error ) == false)
+            {
+                Console.WriteLine($"Failed to push: {run_process_error}");
+                var (push_set_upstream_origin__output, push_set_upstream_origin__error ) = 
+                    run_process(full_project_directory_path, "git", $"push --set-upstream origin {current_branch}");
+                if (push_set_upstream_origin__error.pipe_check(String.IsNullOrEmpty) == false)
+                {
+                    Console.WriteLine($"!!!! failed to push up-stream {push_set_upstream_origin__error}");
+                } 
+
+            }
+
+
         }
-        git_commit(full_project_directory_path);
+        
     }
 
     private static (string output, string error) git_current_branch(string workingDirectory)
     {
+        string program = "git";
+        string arguments = "branch --show-current";
+        return run_process(workingDirectory, program, arguments);
+    }
+
+    private static (string output, string error) run_process(string workingDirectory, string program, string arguments)
+    {
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
-            FileName = "git",
-            Arguments = "branch --show-current",
+            FileName = program,
+            Arguments = arguments,
             RedirectStandardOutput = true,
             UseShellExecute = false,
             CreateNoWindow = true,
             WorkingDirectory = workingDirectory,
             RedirectStandardError = true,
-            
+
         };
 
         var error = "";
@@ -160,37 +190,13 @@ public class Bundle_Watcher
             {
                 error = reader.ReadToEnd();
             }
-            
+
             using (StreamReader reader = process.StandardOutput)
             {
                 output = reader.ReadToEnd();
             }
         }
         return (output, error);
-    }
-
-    private static string git_create_new_branch(string workingDirectory)
-    {
-        DateTime now = DateTime.Now;
-        ProcessStartInfo startInfo = new ProcessStartInfo
-        {
-            FileName = "git",
-            Arguments = $"checkout -b {now:yyyy-MM-dd--HH}h{now:mm}m",
-            RedirectStandardOutput = true,
-            UseShellExecute = false,
-            CreateNoWindow = true,
-            WorkingDirectory = workingDirectory
-        };
-
-        using (Process process = Process.Start(startInfo))
-        {
-            using (StreamReader reader = process.StandardOutput)
-            {
-                string result = reader.ReadToEnd();
-                Console.WriteLine(result);
-                return result; 
-            }
-        }
     }
 
     private static string git_add(string workingDirectory)
