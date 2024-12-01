@@ -191,28 +191,4 @@ public class Bundle_Watcher
         return (output, error);
     }
 
-    private static string git_add(string workingDirectory)
-    {
-        DateTime now = DateTime.Now;
-        ProcessStartInfo startInfo = new ProcessStartInfo
-        {
-            FileName = "git",
-            Arguments = ,
-            RedirectStandardOutput = true,
-            UseShellExecute = false,
-            CreateNoWindow = true,
-            WorkingDirectory = workingDirectory
-        };
-
-        using (Process process = Process.Start(startInfo))
-        {
-            using (StreamReader reader = process.StandardOutput)
-            {
-                string result = reader.ReadToEnd();
-                Console.WriteLine(result);
-                return result;
-            }
-        }
-    }
-
 }
