@@ -133,8 +133,10 @@ public class Bundle_Watcher
                 Console.WriteLine("Changes are present but assumption is that we are already in the feature branch, so suspending creation of a new branch");
             }
             //$"commit -m \"{now:yyyy-MM-dd--HH}h{now:mm}m{now:ss}s\""
+            // there will be no auto-commit anymore
+            // only auto-add and branch creation
             //run_process(full_project_directory_path, "git", $"commit -m \"{now:yyyy-MM-dd--HH}h{now:mm}m{now:ss}s\"");
-
+            //
 
         }
         
