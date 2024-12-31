@@ -1,4 +1,11 @@
 # git-auto-commit
+2024-12-31 12h:28m update - after using this tool for several weeks I realised I will just commit to main branch directly.
+
+So this tool is DEPRECATED now.
+
+So long and thanks for all the fish.
+
+
 Simple tool for my workflow:
 1) if I am on the main branch and edit something - the new feature branch will be created
 2) every change will be automatically staged
